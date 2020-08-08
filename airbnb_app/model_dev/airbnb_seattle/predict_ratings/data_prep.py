@@ -43,3 +43,4 @@ def prepare_data_clean_data(listings_df, reviews_df, calendar_df):
     listings_df['host_response_rate'] = listings_df['host_response_rate'].str.replace("%", "").astype("float")
 
     return [listings_df, reviews_df, calendar_df]
+

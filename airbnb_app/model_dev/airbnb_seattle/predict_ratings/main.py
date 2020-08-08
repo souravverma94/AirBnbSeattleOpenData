@@ -24,6 +24,7 @@ def data_prep_remove_records_without_predictor_variable(listings_df):
 
 def data_prep_remove_all_ratings(listings_df):
     # Remove all ratings but our overall review_scores_rating outcome
+    print(listings_df.info())
     model_data = listings_df.loc[:, ('host_response_time',
                                       'host_response_rate',
                                       'host_acceptance_rate',
@@ -53,6 +54,7 @@ def data_prep_remove_all_ratings(listings_df):
 
 
 def data_prep_get_dummy_variables_for_categorical_fields(model_data):
+    print(f"get_dummies model_data {model_data}")
     # Get dummy variables for our 5 categorical fields
     model_data = pd.get_dummies(model_data,
                                 columns=['neighbourhood_group_cleansed', 'property_type', 'room_type', 'bed_type',
@@ -62,11 +64,11 @@ def data_prep_get_dummy_variables_for_categorical_fields(model_data):
 
 
 def create_rate_prediction_model_data():
-    global listings_df, reviews_df, calendar_df
-    listings_df, reviews_df, calendar_df = create_input_df()
+    listings_df, reviews_df, calendar_df = create_input_df( )
 
     # display_nan_values_percentage()
-    listings_df, reviews_df, calendar_df = drop_nan_values_from_input_df(listings_df, reviews_df, calendar_df)
+    # listings_df, reviews_df, calendar_df = drop_nan_values_from_input_df(listings_df, reviews_df, calendar_df)
+
     listings_df, reviews_df, calendar_df = prepare_data_clean_data(listings_df, reviews_df, calendar_df)
 
     listings_df = data_prep_listings_df(listings_df)
@@ -79,6 +81,5 @@ def create_rate_prediction_model_data():
 
 if __name__ == '__main__':
     model_data = create_rate_prediction_model_data()
-    print(f"model_data len {len(model_data)}")
-    # model_dev_main(model_data)
+    model_dev_main(model_data)
 

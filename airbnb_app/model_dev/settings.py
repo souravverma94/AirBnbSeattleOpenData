@@ -9,3 +9,5 @@ INPUT_DATASET_AIRBNB_CALENDAR = str(os.path.join(INPUT_DATASET_BASE_PATH_AIRBNB,
 print(f"INPUT_DATASET_AIRBNB_LISTINGS {INPUT_DATASET_AIRBNB_LISTINGS}")
 print(f"INPUT_DATASET_AIRBNB_REVIEWS {INPUT_DATASET_AIRBNB_REVIEWS}")
 print(f"INPUT_DATASET_AIRBNB_CALENDAR {INPUT_DATASET_AIRBNB_CALENDAR}")
+
+OUTPUT_MODEL_PICKLE_FILE_OLS = str(os.path.join(os.path.dirname(__file__), "../app/runtime_data/models/airbnb/predict_rate/predict_rating_model_ols.pkl" ))

@@ -5,7 +5,6 @@ from model_dev.settings import INPUT_DATASET_AIRBNB_LISTINGS, INPUT_DATASET_AIRB
 
 
 def create_input_df():
-    global listings_df, reviews_df, calendar_df
 
     listings_df = pd.read_csv(INPUT_DATASET_AIRBNB_LISTINGS)
     reviews_df = pd.read_csv(INPUT_DATASET_AIRBNB_REVIEWS)

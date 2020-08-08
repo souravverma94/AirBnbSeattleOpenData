@@ -20,13 +20,26 @@ def prepare_data_fixed_data_types(listings_df, reviews_df, calendar_df):
     return [listings_df, reviews_df, calendar_df]
 
 
+def data_prep_price_and_cleaning_fee_to_numbers(listings_df):
+    listings_df['price'] = listings_df['price'].str.replace('$', '')
+    listings_df['price'] = listings_df['price'].str.replace("[$, ]", "")
+    listings_df['price'] = listings_df['price'].str.replace(',', '').astype('float64')
+    listings_df['cleaning_fee'] = listings_df['cleaning_fee'].str.replace('$', '')
+    listings_df['cleaning_fee'] = listings_df['cleaning_fee'].str.replace(',', '').astype('float64')
+
+    # Missing data for cleaning fee indicates a $0 cleaning fee
+    listings_df['cleaning_fee'].fillna(0, inplace=True)
+
+    return listings_df
+
+
 def prepare_data_clean_data(listings_df, reviews_df, calendar_df):
     pd.options.mode.chained_assignment = None  # default='warn'
 
     prepare_data_fixed_data_types(listings_df, reviews_df, calendar_df)
 
     listings_df['host_acceptance_rate'] = listings_df['host_acceptance_rate'].str.replace("%", "").astype("float")
-    listings_df['price'] = listings_df['price'].str.replace("[$, ]", "").astype("float")
+    listings_df = data_prep_price_and_cleaning_fee_to_numbers(listings_df)
     listings_df['host_response_rate'] = listings_df['host_response_rate'].str.replace("%", "").astype("float")
 
     return [listings_df, reviews_df, calendar_df]

@@ -1,5 +1,6 @@
 from model_dev.airbnb_seattle.dataset.main import create_input_df
-from model_dev.airbnb_seattle.predict_rate.data_prepare import *
+from model_dev.airbnb_seattle.predict_rate.data_prep import *
+from model_dev.airbnb_seattle.predict_rate.data_prep_listings import data_prep_listings_df
 
 global listings_df, reviews_df, calendar_df
 
@@ -20,6 +21,8 @@ def create_rate_prediction_model():
     # display_nan_values_percentage()
     listings_df, reviews_df, calendar_df = drop_nan_values_from_input_df(listings_df, reviews_df, calendar_df)
     listings_df, reviews_df, calendar_df = prepare_data_clean_data(listings_df, reviews_df, calendar_df)
+
+    listings_df = data_prep_listings_df(listings_df)
 
 
 if __name__ == '__main__':

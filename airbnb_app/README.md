@@ -6,3 +6,7 @@ git rm --cached model_dev/airbnb_seattle/dataset/data/calendar.csv
 
 https://www.kaggle.com/ibjohnsson/predicting-listing-prices
 https://www.kaggle.com/jeremywickman/sleeping-in-seattle-predicting-airbnb-ratings
+
+# Ordinary Least Squares regression (OLS)
+https://www.xlstat.com/en/solutions/features/ordinary-least-squares-regression-ols
+collinear
